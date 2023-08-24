@@ -7,24 +7,22 @@ int main()
 {
     float Datos[MAX];
     float var;
-    int n; /*cantidad de elementos del archivo*/
+    float sum = 0;
+    int n= 0;      /*cantidad de elementos del archivo*/
+    int i = 0; 
     char Nommbrearchivo[MIN];
-    int i;
-    FILE *archivo;
+    FILE * archivo;
 
     printf("ingresar el nombre del archivo: ");
     scanf("%s", &Nommbrearchivo);
 
     archivo = fopen(Nommbrearchivo,"r");
 
-    if  (archivo == NULL) /*�el archivo no se pudo abrir el archivo?*/
-    {
+    if  (archivo == NULL){ /*�el archivo no se pudo abrir el archivo?*/
         printf("no se puede abrir. revisar la ubicacion");
         exit(0);
     }
     fscanf(archivo,"%i", &n);
-    
-    i= 0;
     
     while(i<n)
     {
@@ -36,8 +34,10 @@ int main()
         if (Datos[i] < var){
             var = Datos[i];
         }
+        sum += Datos[i];
         i++;
     }
-    printf("\nel dato menor es: %.2f",var);
+    printf("\nla suma de los datos es: %.3f", sum);
+    printf("\nel dato menor es: %.3f",var);
     return 0;
 }
