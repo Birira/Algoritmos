@@ -3,10 +3,10 @@
  #define MAX 1000
  #define MIN 50
 
-int main()
-{
+
+void leerArchivo(){
     float Datos[MAX];
-    float var;
+    float var = 0;
     float sum = 0;
     int n= 0;      /*cantidad de elementos del archivo*/
     int i = 0; 
@@ -39,5 +39,10 @@ int main()
     }
     printf("\nla suma de los datos es: %.3f", sum);
     printf("\nel dato menor es: %.3f",var);
+}
+
+int main()
+{
+    leerArchivo();
     return 0;
 }
