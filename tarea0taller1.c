@@ -3,7 +3,6 @@
  #define MAX 1000
  #define MIN 50
 
-
 void leerArchivo(){
     float Datos[MAX];
     float var = 0;
@@ -15,7 +14,6 @@ void leerArchivo(){
 
     printf("ingresar el nombre del archivo: ");
     scanf("%s", &Nommbrearchivo);
-
     archivo = fopen(Nommbrearchivo,"r");
 
     if  (archivo == NULL){ /*�el archivo no se pudo abrir el archivo?*/
@@ -24,8 +22,7 @@ void leerArchivo(){
     }
     fscanf(archivo,"%i", &n);
     
-    while(i<n)
-    {
+    while(i<n){
         fscanf(archivo, "%f", &Datos[i]);
         printf("\n %15.3f", Datos[i]);
         if (i == 0){
