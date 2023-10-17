@@ -18,6 +18,7 @@ ArregloBool creaArregloBool(int n) {
   }
   return aux;
 }
+
 Arreglo creaArreglo(int n) {
   Arreglo aux;
   int i;
@@ -29,6 +30,7 @@ Arreglo creaArreglo(int n) {
   }
   return aux;
 }
+
 Matriz creaMatriz(int n) {
   Matriz aux;
   int i;
@@ -47,6 +49,7 @@ Matriz creaMatriz(int n) {
   }
   return aux;
 }
+
 Matriz leeArchivo(char nomArchivo[20], int *pn, int *pm, int *ptipo) {
   FILE *archivo;
   Matriz Grafo;
@@ -76,6 +79,7 @@ Matriz leeArchivo(char nomArchivo[20], int *pn, int *pm, int *ptipo) {
 
   return Grafo;
 }
+
 void imprimeMatrizGrafo(Matriz Grafo, int n) {
   int i, j;
 
@@ -98,12 +102,14 @@ void imprimeMatrizGrafo(Matriz Grafo, int n) {
     printf("\n");
   }
 }
+
 void reseteaVisitados(ArregloBool Visitados, int n) {
   int i;
 
   for (i = 0; i < n; i++)
     Visitados[i] = false;
 }
+
 void Profundidad(Matriz Grafo, int n, ArregloBool Visitados, int nodo) {
   int i;
 
@@ -113,6 +119,7 @@ void Profundidad(Matriz Grafo, int n, ArregloBool Visitados, int nodo) {
     if (Grafo[nodo][i] != 0 && Visitados[i] == false)
       Profundidad(Grafo, n, Visitados, i);
 }
+
 bool estaEnFila(Arreglo Fila, int n, int nodo) {
   int i;
 
@@ -122,6 +129,7 @@ bool estaEnFila(Arreglo Fila, int n, int nodo) {
   }
   return false;
 }
+
 void Amplitud(Matriz Grafo, int n, ArregloBool Visitados, int v0) {
   int i, nodo, largoFila, posInicial;
   Arreglo Fila;
@@ -150,6 +158,7 @@ void Amplitud(Matriz Grafo, int n, ArregloBool Visitados, int v0) {
   }
   free(Fila);
 }
+
 int numeroNodosSinVisitar(ArregloBool Visitados, int n) {
   int i, cont;
 
@@ -160,6 +169,7 @@ int numeroNodosSinVisitar(ArregloBool Visitados, int n) {
   }
   return cont;
 }
+
 int nodoDeMinimoCostoSinVisitar(Arreglo Costo, ArregloBool Visitados, int n) {
   int i, nodo, minimo;
   bool esElPrimero;
@@ -178,6 +188,7 @@ int nodoDeMinimoCostoSinVisitar(Arreglo Costo, ArregloBool Visitados, int n) {
     }
   return nodo;
 }
+
 void imprimeCaminos(Arreglo Predecesor, Arreglo Costo, ArregloBool Visitados,
                     int n, int v0) {
   Arreglo Camino;
@@ -204,6 +215,7 @@ void imprimeCaminos(Arreglo Predecesor, Arreglo Costo, ArregloBool Visitados,
   }
   free(Camino);
 }
+
 void Dijkstra(Matriz Grafo, int n, int v0) {
   int i, w = 0;
   ArregloBool Visitados;

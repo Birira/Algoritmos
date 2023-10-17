@@ -19,5 +19,6 @@ int main() {
   printf("\n\n");
   imprimeMayorCosto(Grafo, n);
   printf("\n\n");
+  Dijkstra(Grafo,n,10);
   return 0;
 }
