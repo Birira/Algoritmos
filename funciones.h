@@ -254,13 +254,96 @@ void Dijkstra(Matriz Grafo, int n, int v0) {
 void imprimeMayorCosto(Matriz Grafo, int n) {
   int i, j, np, m;
   int mayor = Grafo[0][0];
-  for (i = 0; i < n; i++)
+  for (i = 0; i < n; i++){
     for (j = 0; j < n; j++)
       if (Grafo[i][j] > mayor) {
         mayor = Grafo[i][j];
         np = i;
         m = j;
       }
+    }
   printf("costo: %i", mayor);
   printf("\nEn el arco: %i,%i", np, m);
+}
+
+void imprimeAdy(Matriz Grafo, int n){
+  int i, j;
+  int grado;
+  for(i = 0; i<n;i++){
+    grado = 0;
+    for (j = 0; j<n;j++){
+      if (Grafo[i][j] != 0){
+        printf("\n%i es ady a %i\n", j, i);
+        grado++;
+      }
+    }
+    printf("el grado de nodo de %i es %i\n", i, grado);
+  }
+}
+
+bool kregular(Matriz Grafo, int n, int k){
+  int i, j, cont;
+  for (i=0; i<n; i++){
+    cont=0;
+    for (j=0; j<n; j++){
+      if(Grafo[i][j] != 0){
+        cont++;
+      }
+    }
+    if (cont != k){
+      return false;
+    }
+  }
+  return true;
+}
+
+void gConexo(Matriz Grafo, int n){
+  int i;
+  int cont = 1;
+  ArregloBool visitados;
+  visitados = creaArregloBool(n);
+  Profundidad(Grafo,n,visitados,1);
+  for (i=0; i< n;i++){
+    if(visitados[i] == false){
+      printf("\n");
+      Profundidad(Grafo,n,visitados,i);
+      cont++;
+    }
+  }
+  if (cont > 1){
+    printf("\nes desconexo");
+    printf("\ncomponentes: %i",cont);
+  }
+  else{
+    printf("\nes conexo");
+  } 
+}
+
+bool gCompleto(Matriz Grafo, int n){
+  int i, j, cont;
+  for (i=0; i<n; i++){
+    cont=0;
+    for (j=0; j<n; j++){
+      if(Grafo[i][j] != 0){
+        cont++;
+      }
+    }
+    if(cont != n-1){
+      return false;
+    }
+  }
+  return true;
+}
+
+void jkasjkadjk(Matriz Grafo, int n, int x){
+  int i,j;
+  ArregloBool afectados;
+  afectados = creaArregloBool(n);
+  Profundidad(Grafo, n, afectados, x);
+  printf("\n");
+  for (i = 0; i<n;i++){
+    if(afectados[i] != false && i != x){
+      printf("fue afectado: %i ", i);
+    }
+  }
 }
